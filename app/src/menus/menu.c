@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include "menu.h"
 
-int mostrarMenu(){
+int showMenu(){
 	printf("|-----------------|\n");
 	printf("|   LIBRERIA AIC  |\n");
 	printf("|-----------------|\n");
@@ -12,10 +12,10 @@ int mostrarMenu(){
 	printf("Eliga una opcion: ");
 
 	fflush(stdout);
-	return pedirOp();
+	return askOP();
 }
 
-int mostrarLibreriaMenu(){
+int showLibraryMenu(){
 	printf("|------------------------------------|\n");
 	printf("|       LIBRERIA AIC - FILTRADO      |\n");
 	printf("|------------------------------------|\n");
@@ -27,17 +27,14 @@ int mostrarLibreriaMenu(){
 	printf("Eliga una opcion: ");
 
 	fflush(stdout);
-	return pedirOp();
+	return askOP();
 }
 
-int pedirOp(){
+int askOP(){
 	int op;
 	fflush(stdin);
 	scanf("%i", &op);
 	return op;
 }
 
-void mostrarTitulos(){
-	printf("%14s%30s%30s%8s%40s%50s\n", "ISBN", "TITLE", "AUTOR", "AÑO", "DESCRIP", "OPINION");
-	fflush(stdout);
-}
+
