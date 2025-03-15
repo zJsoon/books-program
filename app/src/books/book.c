@@ -30,10 +30,10 @@ void showBookYear(lBook lb, int year){
 	}
 }
 
-void showBookAuthor(lBook lb, int year){
+void showBookAuthor(lBook lb, char *author){
 	int pos;
 	for(pos=0;pos<lb.numBook;pos++){
-		if(lb.aBook[pos].year==year){
+		if(strcmp(lb.aBook[pos].author,author)==0){
 			showBook(lb.aBook[pos]);
 		}
 	}
