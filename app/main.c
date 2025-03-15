@@ -10,6 +10,7 @@ int main() {
 	int op,op1;
 
 	iniBooks(&lb);
+	loadBooksCSV("data/books.csv",&lb);
 
 	do {
 		system("cls");
@@ -27,9 +28,16 @@ int main() {
 					printf("Volviendo menú principal...");
 					fflush(stdout);
 					break;
-				case 1:
+				case 1: // Ver todos los libros.
 					mostrarTitulos();
 					showBooks(lb);
+					break;
+				case 2: // Ver todos los libros del mismo año
+					mostrarTitulos();
+
+					showBookYear(lb, askYear());
+					break;
+				case 3: // Ver todos los libros del mismo autor
 					break;
 				default:
 					printf("La opción seleccionada es incorrecta.\n\n");
@@ -50,6 +58,8 @@ int main() {
 		}
 
 	} while (op != 0);
+
+	copyBooksCSV("data/books.csv",lb);
 
 	free(lb.aBook);
 
