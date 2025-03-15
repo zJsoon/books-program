@@ -15,10 +15,13 @@ typedef struct{
 	int numBook;
 } lBook;
 
-void mostrarLibros(lBook lb);
-void mostrarLibro(Book b);
+void iniBooks(lBook *lb);
 
-void cargarLibros();
-void addLibro();
+void showBooks(lBook lb);
+void showBook(Book b);
+
+void loadBooks();
+Book askBook();
+void addLibro(lBook *lb, Book b);
 
 #endif /* BOOK_H_ */
