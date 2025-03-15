@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+
 #include "src/menus/menu.h"
 #include "src/books/book.h"
 
@@ -7,25 +8,25 @@ int main() {
 	lBook lb;
 	Book b;
 
-	int op,op1;
+	int op, op1;
 
 	iniBooks(&lb);
-	loadBooksCSV("data/books.csv",&lb);
+	loadBooksCSV("data/books.csv", &lb);
 
 	do {
 		system("cls");
-		op = mostrarMenu();
+		op = showMenu();
 		switch (op) {
 		case 0:
-			printf("Saliendo...");
+			printf("Saliendo...\n");
 			fflush(stdout);
 			break;
 		case 1:
 			do {
-				op1 = mostrarLibreriaMenu();
+				op1 = showLibraryMenu();
 				switch (op1) {
 				case 0:
-					printf("Volviendo menú principal...");
+					printf("Volviendo menú principal...\n");
 					fflush(stdout);
 					break;
 				case 1:
@@ -33,11 +34,9 @@ int main() {
 					showBooks(lb);
 					break;
 				case 2:
-					mostrarTitulos();
 					showBookYear(lb, askYear());
 					break;
 				case 3:
-					mostrarTitulos();
 					showBookYear(lb, askAuthor());
 					break;
 				default:
@@ -60,7 +59,7 @@ int main() {
 
 	} while (op != 0);
 
-	copyBooksCSV("data/books.csv",lb);
+	copyBooksCSV("data/books.csv", lb);
 
 	free(lb.aBook);
 
