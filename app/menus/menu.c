@@ -1,10 +1,3 @@
-/*
- * menu.c
- *
- *  Created on: 20 feb 2025
- *      Author: Admin
- */
-
 #include <stdio.h>
 #include "menu.h"
 

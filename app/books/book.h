@@ -1,10 +1,3 @@
-/*
- * book.h
- *
- *  Created on: 20 feb 2025
- *      Author: Admin
- */
-
 #ifndef BOOK_H_
 #define BOOK_H_
 
