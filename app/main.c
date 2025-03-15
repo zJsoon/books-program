@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "menus/menu.h"
-#include "books/book.h"
+#include "src/menus/menu.h"
+#include "src/books/book.h"
 
 
 int main(){

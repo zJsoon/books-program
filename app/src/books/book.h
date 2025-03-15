@@ -18,7 +18,7 @@ typedef struct{
 void mostrarLibros(lBook lb);
 void mostrarLibro(Book b);
 
-void addLibro();
 void cargarLibros();
+void addLibro();
 
 #endif /* BOOK_H_ */
