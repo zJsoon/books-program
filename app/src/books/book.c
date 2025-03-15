@@ -1,4 +1,7 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
 #include "book.h"
 
 void iniBooks(lBook *lb){
@@ -26,11 +29,35 @@ void showBookYear(lBook lb, int year){
 		}
 	}
 }
-void loadBooksCSV(lBook *lb, Book b){
 
+void loadBooksCSV(char *csv, lBook *lb){
+	char linea[500];
+		FILE *pf;
+		Book b;
+
+		pf = fopen(csv, "r");
+
+		if (pf != (FILE*) NULL) {
+			while (fscanf(pf, "%s", linea) != EOF) {
+				char *ISBN = strtok(linea, ";");
+				char *title = strtok(NULL, ";");
+				char *autor = strtok(NULL, ";");
+				char *year = strtok(NULL, ";");
+				char *desc = strtok(NULL, "");
+
+				b.ISBN = atoi(ISBN);
+				strcpy(b.title, title);
+				strcpy(b.autor, autor);
+				b.year = atoi(year);
+				strcpy(b.desc, desc);
+
+				addBook(lb, b);
+			}
+			fclose(pf);
+		}
 }
 
-void addLibro(lBook *lb, Book b){
+void addBook(lBook *lb, Book b){
 	int i;
 
 	    if (lb->aBook == NULL) {

@@ -24,7 +24,7 @@ void loadBooksCSV(char *csv, lBook *lb);
 
 int askYear();
 Book askBook();
-void addLibro(lBook *lb, Book b);
+void addBook(lBook *lb, Book b);
 
 void copyBooksCSV(char *csv, lBook lb);
 
