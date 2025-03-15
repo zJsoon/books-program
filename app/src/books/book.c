@@ -54,7 +54,7 @@ void loadBooksCSV(char *csv, lBook *lb){
 				char *year = strtok(NULL, ";");
 				char *desc = strtok(NULL, "");
 
-				b.ISBN = atoi(ISBN);
+				strcpy(b.ISBN, ISBN);
 				strcpy(b.title, title);
 				strcpy(b.author, autor);
 				b.year = atoi(year);
@@ -110,7 +110,7 @@ Book askBook(){
 	printf("Introduce el ISBN del libro: ");
 	fflush(stdout);
 	fflush(stdin);
-	scanf("%d", &b.ISBN);
+	fgets(b.ISBN, 14, stdin);
 	printf("Introduce el título del libro: ");
 	fflush(stdout);
 	fflush(stdin);
@@ -137,7 +137,7 @@ void copyBooksCSV(char *csv, lBook lb){
 	if (pf != (FILE*) NULL) {
 		for (int i = 0; i < lb.numBook; i++) {
 			Book b = lb.aBook[i];
-			fprintf(pf, "%d;%s;%s;%d;%s\n", b.ISBN, b.title, b.author, b.year, b.desc);
+			fprintf(pf, "%s;%s;%s;%d;%s\n", b.ISBN, b.title, b.author, b.year, b.desc);
 		}
 		printf("Datos guardados en %s correctamente.\n", csv);
 		fflush(stdout);
