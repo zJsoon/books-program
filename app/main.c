@@ -28,16 +28,17 @@ int main() {
 					printf("Volviendo menú principal...");
 					fflush(stdout);
 					break;
-				case 1: // Ver todos los libros.
+				case 1:
 					mostrarTitulos();
 					showBooks(lb);
 					break;
-				case 2: // Ver todos los libros del mismo año
+				case 2:
 					mostrarTitulos();
-
 					showBookYear(lb, askYear());
 					break;
-				case 3: // Ver todos los libros del mismo autor
+				case 3:
+					mostrarTitulos();
+					showBookYear(lb, askAuthor());
 					break;
 				default:
 					printf("La opción seleccionada es incorrecta.\n\n");
@@ -49,7 +50,7 @@ int main() {
 			break;
 		case 2:
 			b = askBook();
-			addLibro(&lb, b);
+			addBook(&lb, b);
 			break;
 		default:
 			printf("La opción seleccionada es incorrecta.\n\n");

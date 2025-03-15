@@ -17,11 +17,20 @@ void showBooks(lBook lb){
 }
 
 void showBook(Book b){
-	printf("%14s%30s%30s%8i%50s\n", b.ISBN, b.title, b.autor, b.year, b.desc);
+	printf("%14s%30s%30s%8i%50s\n", b.ISBN, b.title, b.author, b.year, b.desc);
 	fflush(stdout);
 }
 
 void showBookYear(lBook lb, int year){
+	int pos;
+	for(pos=0;pos<lb.numBook;pos++){
+		if(lb.aBook[pos].year==year){
+			showBook(lb.aBook[pos]);
+		}
+	}
+}
+
+void showBookAuthor(lBook lb, int year){
 	int pos;
 	for(pos=0;pos<lb.numBook;pos++){
 		if(lb.aBook[pos].year==year){
@@ -47,7 +56,7 @@ void loadBooksCSV(char *csv, lBook *lb){
 
 				b.ISBN = atoi(ISBN);
 				strcpy(b.title, title);
-				strcpy(b.autor, autor);
+				strcpy(b.author, autor);
 				b.year = atoi(year);
 				strcpy(b.desc, desc);
 
@@ -79,12 +88,20 @@ void addBook(lBook *lb, Book b){
 }
 
 int askYear(){
-	int op;
+	int yr;
 	printf("Selecciona el año en el que quieras filtrar: ");
 	fflush(stdout);
 	fflush(stdin);
-	scanf("%i", &op);
-	return op;
+	scanf("%i", &yr);
+	return yr;
+}
+char askAuthor(){
+	char author;
+	printf("Selecciona el autor/a en el que quieras filtrar: ");
+	fflush(stdout);
+	fflush(stdin);
+    scanf("%s", author);
+	return author;
 }
 
 Book askBook(){
@@ -101,7 +118,7 @@ Book askBook(){
 	printf("Introduce el autor del libro: ");
 	fflush(stdout);
 	fflush(stdin);
-	fgets(b.autor, 30, stdin);
+	fgets(b.author, 30, stdin);
 	printf("Introduce el año del libro: ");
 	fflush(stdout);
 	fflush(stdin);
@@ -120,7 +137,7 @@ void copyBooksCSV(char *csv, lBook lb){
 	if (pf != (FILE*) NULL) {
 		for (int i = 0; i < lb.numBook; i++) {
 			Book b = lb.aBook[i];
-			fprintf(pf, "%d;%s;%s;%d;%s\n", b.ISBN, b.title, b.autor, b.year, b.desc);
+			fprintf(pf, "%d;%s;%s;%d;%s\n", b.ISBN, b.title, b.author, b.year, b.desc);
 		}
 		printf("Datos guardados en %s correctamente.\n", csv);
 		fflush(stdout);
