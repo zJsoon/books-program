@@ -5,11 +5,11 @@
 
 int main() {
 	lBook lb;
-	//Book b;
+	Book b;
 
 	int op,op1;
 
-	lb.numBook = 0;
+	iniBooks(&lb);
 
 	do {
 		system("cls");
@@ -24,18 +24,24 @@ int main() {
 				op1 = mostrarLibreriaMenu();
 				switch (op1) {
 				case 0:
-
+					printf("Volviendo menú principal...");
+					fflush(stdout);
 					break;
 				case 1:
 					mostrarTitulos();
-					mostrarLibros(lb);
+					showBooks(lb);
+					break;
 				default:
+					printf("La opción seleccionada es incorrecta.\n\n");
+					fflush(stdout);
 					break;
 				}
 
 			} while (op1 != 0);
 			break;
 		case 2:
+			b = askBook();
+			addLibro(&lb, b);
 			break;
 		default:
 			printf("La opción seleccionada es incorrecta.\n\n");
@@ -44,5 +50,8 @@ int main() {
 		}
 
 	} while (op != 0);
+
+	free(lb.aBook);
+
 	return 0;
 }
