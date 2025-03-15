@@ -6,8 +6,7 @@ typedef struct{
 	char title[30];
 	char autor[30];
 	int year;
-	char desc[40];
-	char op[50];
+	char desc[50];
 } Book;
 
 typedef struct{
@@ -19,9 +18,14 @@ void iniBooks(lBook *lb);
 
 void showBooks(lBook lb);
 void showBook(Book b);
+void showBookYear(lBook lb, int year);
 
-void loadBooks();
+void loadBooksCSV(char *csv, lBook *lb);
+
+int askYear();
 Book askBook();
 void addLibro(lBook *lb, Book b);
+
+void copyBooksCSV(char *csv, lBook lb);
 
 #endif /* BOOK_H_ */
