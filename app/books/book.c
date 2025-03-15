@@ -8,6 +8,6 @@ void mostrarLibros(lBook lb){
 	}
 };
 void mostrarLibro(Book b){
-	printf("%14s%30s%30s%11s%40s%50s\n", b.ISBN, b.title, b.autor, b.fecha, b.desc, b.op);
+	printf("%14s%30s%30s%8i%40s%50s\n", b.ISBN, b.title, b.autor, b.year, b.desc, b.op);
 	fflush(stdout);
 };

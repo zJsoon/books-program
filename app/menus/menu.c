@@ -20,6 +20,6 @@ int mostrarMenu(){
 };
 
 void mostrarTitulos(){
-	printf("%14s%30s%30s%11s%40s%50s\n", "ISBN", "TITLE", "AUTOR", "FECHA", "DESCRIP", "OPINION");
+	printf("%14s%30s%30s%8s%40s%50s\n", "ISBN", "TITLE", "AUTOR", "AÑO", "DESCRIP", "OPINION");
 	fflush(stdout);
 };

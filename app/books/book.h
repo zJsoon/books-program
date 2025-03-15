@@ -5,13 +5,13 @@ typedef struct{
 	char ISBN[14];
 	char title[30];
 	char autor[30];
-	char fecha[11]; //dd-mm-yyyy
+	int year;
 	char desc[40];
 	char op[50];
 } Book;
 
 typedef struct{
-	Book aBook[2000];
+	Book *aBook;
 	int numBook;
 } lBook;
 
