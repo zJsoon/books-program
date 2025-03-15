@@ -13,7 +13,7 @@ int mostrarMenu(){
 
 	fflush(stdout);
 	return pedirOp();
-};
+}
 
 int mostrarLibreriaMenu(){
 	printf("|------------------------------------|\n");
@@ -40,4 +40,4 @@ int pedirOp(){
 void mostrarTitulos(){
 	printf("%14s%30s%30s%8s%40s%50s\n", "ISBN", "TITLE", "AUTOR", "AÑO", "DESCRIP", "OPINION");
 	fflush(stdout);
-};
+}
