@@ -9,6 +9,11 @@ void iniBooks(lBook *lb){
 	lb->numBook = 0;
 }
 
+void showTitles(){
+	printf("%14s%50s%30s%8s%150s\n", "ISBN", "TITLE", "AUTOR", "AÑO", "DESCRIP");
+	fflush(stdout);
+}
+
 void showBooks(lBook lb){
 	int pos;
 	for(pos=0;pos<lb.numBook;pos++){
@@ -17,12 +22,13 @@ void showBooks(lBook lb){
 }
 
 void showBook(Book b){
-	printf("%14s%30s%30s%8i%50s\n", b.ISBN, b.title, b.author, b.year, b.desc);
+	printf("%14s%50s%30s%8i%150s\n", b.ISBN, b.title, b.author, b.year, b.desc);
 	fflush(stdout);
 }
 
 void showBookYear(lBook lb, int year){
 	int pos;
+	showTitles();
 	for(pos=0;pos<lb.numBook;pos++){
 		if(lb.aBook[pos].year==year){
 			showBook(lb.aBook[pos]);
@@ -32,6 +38,7 @@ void showBookYear(lBook lb, int year){
 
 void showBookAuthor(lBook lb, char *author){
 	int pos;
+	showTitles();
 	for(pos=0;pos<lb.numBook;pos++){
 		if(strcmp(lb.aBook[pos].author,author)==0){
 			showBook(lb.aBook[pos]);
@@ -40,7 +47,7 @@ void showBookAuthor(lBook lb, char *author){
 }
 
 void loadBooksCSV(char *csv, lBook *lb){
-	char linea[500];
+	char linea[1000];
 		FILE *pf;
 		Book b;
 
@@ -112,15 +119,15 @@ Book askBook(){
 	printf("Introduce el ISBN del libro: ");
 	fflush(stdout);
 	fflush(stdin);
-	fgets(b.ISBN, 14, stdin);
+	scanf("%s", b.ISBN);
 	printf("Introduce el título del libro: ");
 	fflush(stdout);
 	fflush(stdin);
-	fgets(b.title, 30, stdin);
+	scanf("%s", b.title);
 	printf("Introduce el autor del libro: ");
 	fflush(stdout);
 	fflush(stdin);
-	fgets(b.author, 30, stdin);
+	scanf("%s", b.author);
 	printf("Introduce el año del libro: ");
 	fflush(stdout);
 	fflush(stdin);
@@ -128,7 +135,7 @@ Book askBook(){
 	printf("Introduce una descripción breve del libro: ");
 	fflush(stdout);
 	fflush(stdin);
-	fgets(b.desc, 50, stdin);
+	scanf("%s", b.desc);
 
 	return b;
 }

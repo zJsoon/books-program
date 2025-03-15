@@ -3,19 +3,21 @@
 
 typedef struct{
 	char ISBN[14];
-	char title[30];
+	char title[50];
 	char author[30];
 	int year;
-	char desc[50];
+	char desc[150];
 } Book;
 
 typedef struct{
 	Book *aBook;
 	int numBook;
+
 } lBook;
 
 void iniBooks(lBook *lb);
 
+void showTitles();
 void showBooks(lBook lb);
 void showBook(Book b);
 void showBookYear(lBook lb, int year);
