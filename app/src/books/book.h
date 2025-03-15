@@ -16,6 +16,8 @@ typedef struct{
 } lBook;
 
 void iniBooks(lBook *lb);
+void loadBooksCSV(char *csv, lBook *lb);
+void copyBooksCSV(char *csv, lBook lb);
 
 void showTitles();
 void showBooks(lBook lb);
@@ -23,13 +25,9 @@ void showBook(Book b);
 void showBookYear(lBook lb, int year);
 void showBookAuthor(lBook lb, char *author);
 
-void loadBooksCSV(char *csv, lBook *lb);
-
 int askYear();
 char askAuthor();
 Book askBook();
 void addBook(lBook *lb, Book b);
-
-void copyBooksCSV(char *csv, lBook lb);
 
 #endif /* BOOK_H_ */
