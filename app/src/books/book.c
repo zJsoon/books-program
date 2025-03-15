@@ -113,3 +113,20 @@ Book askBook(){
 
 	return b;
 }
+
+void copyBooksCSV(char *csv, lBook lb){
+	FILE *pf = fopen(csv, "w");
+
+	if (pf != (FILE*) NULL) {
+		for (int i = 0; i < lb.numBook; i++) {
+			Book b = lb.aBook[i];
+			fprintf(pf, "%d;%s;%s;%d;%s\n", b.ISBN, b.title, b.autor, b.year, b.desc);
+		}
+		printf("Datos guardados en %s correctamente.\n", csv);
+		fflush(stdout);
+	} else {
+		perror("Error al abrir el archivo.\n");
+	}
+
+	fclose(pf);
+}
