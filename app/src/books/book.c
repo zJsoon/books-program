@@ -97,10 +97,12 @@ int askYear(){
 }
 char askAuthor(){
 	char author;
+
 	printf("Selecciona el autor/a en el que quieras filtrar: ");
 	fflush(stdout);
 	fflush(stdin);
-    scanf("%s", author);
+    scanf("%s", &author);
+
 	return author;
 }
 
