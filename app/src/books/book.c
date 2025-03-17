@@ -10,7 +10,7 @@ void iniBooks(lBook *lb) {
 }
 
 void loadBooksCSV(char *csv, lBook *lb) {
-	char linea[1000];
+	char linea[500];
 	FILE *pf;
 	Book b;
 
@@ -24,6 +24,7 @@ void loadBooksCSV(char *csv, lBook *lb) {
 			char *year = strtok(NULL, ";");
 			char *editorial = strtok(NULL, ";");
 			char *edition = strtok(NULL, ";");
+			char *key_words = strtok(NULL, ";");
 			char *desc = strtok(NULL, "");
 
 			strcpy(b.ISBN, ISBN);
@@ -32,6 +33,7 @@ void loadBooksCSV(char *csv, lBook *lb) {
 			b.year = atoi(year);
 			strcpy(b.editorial, editorial);
 			b.edition = atoi(edition);
+			strcpy(b.key_words, key_words);
 			strcpy(b.notes, desc);
 
 			addBook(lb, b);
@@ -46,7 +48,7 @@ void copyBooksCSV(char *csv, lBook lb) {
 	if (pf != (FILE*) NULL) {
 		for (int i = 0; i < lb.numBook; i++) {
 			Book b = lb.aBook[i];
-			fprintf(pf, "%s;%s;%s;%d;%s;%d;%s\n", b.ISBN, b.title, b.author, b.year, b.editorial, b.edition, b.notes);
+			fprintf(pf, "%s;%s;%s;%d;%s;%d;%s;%s\n", b.ISBN, b.title, b.author, b.year, b.editorial, b.edition, b.key_words, b.notes);
 		}
 		printf("Datos guardados en %s correctamente.\n", csv);
 		fflush(stdout);
@@ -58,7 +60,7 @@ void copyBooksCSV(char *csv, lBook lb) {
 }
 
 void showTitles() {
-	printf("%14s%50s%150s%8s%30s%8s%150s\n", "ISBN", "TITLE", "AUTOR", "YEAR", "EDITORIAL", "EDICION", "NOTAS");
+	printf("%10s%14s%50s%150s%8s%30s%8s%50s%150s\n", "ID", "ISBN", "TITLE", "AUTOR", "YEAR", "EDITORIAL", "EDICION", "PALABRAS CLAVE", "NOTAS");
 	fflush(stdout);
 }
 
@@ -70,7 +72,7 @@ void showBooks(lBook lb) {
 }
 
 void showBook(Book b) {
-	printf("%14s%50s%150s%8i%30s%8i%150s\n", b.ISBN, b.title, b.author, b.year, b.editorial, b.edition, b.notes);
+	printf("%10s%14s%50s%150s%8i%30s%8i%50s%150s\n", b.ID, b.ISBN, b.title, b.author, b.year, b.editorial, b.edition, b.key_words, b.notes);
 	fflush(stdout);
 }
 
@@ -114,14 +116,15 @@ char askAuthor() {
 	return author;
 }
 
-Book askBook() {
+Book askBook(lBook lb) {
 	Book b;
 
+	sprintf(b.ID, "AIC-%d", lb.numBook);
 	printf("Introduce el ISBN del libro: ");
 	fflush(stdout);
 	fflush(stdin);
 	scanf("%s", b.ISBN);
-	printf("Introduce el título del libro: ");
+	printf("Introduce el titulo del libro: ");
 	fflush(stdout);
 	fflush(stdin);
 	scanf("%s", b.title);
@@ -133,14 +136,18 @@ Book askBook() {
 	fflush(stdout);
 	fflush(stdin);
 	scanf("%d", &b.year);
-	printf("Introduce una editorial breve del libro: ");
+	printf("Introduce la editorial del libro: ");
 	fflush(stdout);
 	fflush(stdin);
 	scanf("%s", b.editorial);
-	printf("Introduce el edicion del libro: ");
+	printf("Introduce la edicion del libro: ");
 	fflush(stdout);
 	fflush(stdin);
 	scanf("%d", &b.edition);
+	printf("Introduce palabras clave sobre el libro: ");
+	fflush(stdout);
+	fflush(stdin);
+	scanf("%s", b.notes);
 	printf("Introduce una nota breve del libro: ");
 	fflush(stdout);
 	fflush(stdin);

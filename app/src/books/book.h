@@ -2,12 +2,14 @@
 #define BOOK_H_
 
 typedef struct{
+	char ID[10];
 	char ISBN[14];
 	char title[50];
 	char author[150];
 	int year;
 	char editorial[30];
 	int edition;
+	char key_words[50];
 	char notes[150];
 } Book;
 
