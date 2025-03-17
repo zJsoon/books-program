@@ -98,7 +98,7 @@ void showBookAuthor(lBook lb, char *author) {
 
 int askYear() {
 	int yr;
-	printf("Selecciona el año en el que quieras filtrar: ");
+	printf("Selecciona el year en el que quieras filtrar: ");
 	fflush(stdout);
 	fflush(stdin);
 	scanf("%i", &yr);
