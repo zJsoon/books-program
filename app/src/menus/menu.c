@@ -16,14 +16,14 @@ int showMenu(){
 }
 
 int showLibraryMenu(){
-	printf("|------------------------------------|\n");
-	printf("|       LIBRERIA AIC - FILTRADO      |\n");
-	printf("|------------------------------------|\n");
-	printf("| 1. Ver libreria entera             |\n");
-	printf("| 2. Ver libreria filtrada por año   |\n");
-	printf("| 3. Ver libreria filtrada por autor |\n");
-	printf("| 0. Salir                           |\n");
-	printf("|------------------------------------|\n");
+	printf("|-------------------------------------|\n");
+	printf("|        LIBRERIA AIC - FILTRADO      |\n");
+	printf("|-------------------------------------|\n");
+	printf("| 1. Ver libreria entera              |\n");
+	printf("| 2. Ver libreria filtrada por year   |\n");
+	printf("| 3. Ver libreria filtrada por autor  |\n");
+	printf("| 0. Salir                            |\n");
+	printf("|-------------------------------------|\n");
 	printf("Eliga una opcion: ");
 
 	fflush(stdout);
