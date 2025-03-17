@@ -22,13 +22,17 @@ void loadBooksCSV(char *csv, lBook *lb) {
 			char *title = strtok(NULL, ";");
 			char *autor = strtok(NULL, ";");
 			char *year = strtok(NULL, ";");
+			char *editorial = strtok(NULL, ";");
+			char *edition = strtok(NULL, ";");
 			char *desc = strtok(NULL, "");
 
 			strcpy(b.ISBN, ISBN);
 			strcpy(b.title, title);
 			strcpy(b.author, autor);
 			b.year = atoi(year);
-			strcpy(b.desc, desc);
+			strcpy(b.editorial, editorial);
+			b.edition = atoi(edition);
+			strcpy(b.notes, desc);
 
 			addBook(lb, b);
 		}
@@ -42,8 +46,7 @@ void copyBooksCSV(char *csv, lBook lb) {
 	if (pf != (FILE*) NULL) {
 		for (int i = 0; i < lb.numBook; i++) {
 			Book b = lb.aBook[i];
-			fprintf(pf, "%s;%s;%s;%d;%s\n", b.ISBN, b.title, b.author, b.year,
-					b.desc);
+			fprintf(pf, "%s;%s;%s;%d;%s;%d;%s\n", b.ISBN, b.title, b.author, b.year, b.editorial, b.edition, b.notes);
 		}
 		printf("Datos guardados en %s correctamente.\n", csv);
 		fflush(stdout);
@@ -55,8 +58,7 @@ void copyBooksCSV(char *csv, lBook lb) {
 }
 
 void showTitles() {
-	printf("%14s%50s%30s%8s%150s\n", "ISBN", "TITLE", "AUTOR", "AÑO",
-			"DESCRIP");
+	printf("%14s%50s%150s%8s%30s%8s%150s\n", "ISBN", "TITLE", "AUTOR", "YEAR", "EDITORIAL", "EDICION", "NOTAS");
 	fflush(stdout);
 }
 
@@ -68,7 +70,7 @@ void showBooks(lBook lb) {
 }
 
 void showBook(Book b) {
-	printf("%14s%50s%30s%8i%150s\n", b.ISBN, b.title, b.author, b.year, b.desc);
+	printf("%14s%50s%150s%8i%30s%8i%150s\n", b.ISBN, b.title, b.author, b.year, b.editorial, b.edition, b.notes);
 	fflush(stdout);
 }
 
@@ -127,14 +129,22 @@ Book askBook() {
 	fflush(stdout);
 	fflush(stdin);
 	scanf("%s", b.author);
-	printf("Introduce el año del libro: ");
+	printf("Introduce el year del libro: ");
 	fflush(stdout);
 	fflush(stdin);
 	scanf("%d", &b.year);
-	printf("Introduce una descripción breve del libro: ");
+	printf("Introduce una editorial breve del libro: ");
 	fflush(stdout);
 	fflush(stdin);
-	scanf("%s", b.desc);
+	scanf("%s", b.editorial);
+	printf("Introduce el edicion del libro: ");
+	fflush(stdout);
+	fflush(stdin);
+	scanf("%d", &b.edition);
+	printf("Introduce una nota breve del libro: ");
+	fflush(stdout);
+	fflush(stdin);
+	scanf("%s", b.notes);
 
 	return b;
 }

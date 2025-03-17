@@ -4,9 +4,11 @@
 typedef struct{
 	char ISBN[14];
 	char title[50];
-	char author[30];
+	char author[150];
 	int year;
-	char desc[150];
+	char editorial[30];
+	int edition;
+	char notes[150];
 } Book;
 
 typedef struct{
