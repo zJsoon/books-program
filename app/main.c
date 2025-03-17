@@ -30,7 +30,7 @@ int main() {
 					fflush(stdout);
 					break;
 				case 1:
-					mostrarTitulos();
+					showTitles();
 					showBooks(lb);
 					break;
 				case 2:
@@ -48,7 +48,7 @@ int main() {
 			} while (op1 != 0);
 			break;
 		case 2:
-			b = askBook();
+			b = askBook(lb);
 			addBook(&lb, b);
 			break;
 		default:
